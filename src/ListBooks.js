@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 
 class ListBooks extends Component {
+    shelves=['curently Reading','Read','Future Reads']
     render(){
         return (
             <div className="list-books">
@@ -13,7 +14,7 @@ class ListBooks extends Component {
             </div>
             <div className="list-books-content">
               <div>
-              <BookShelf/>
+              <BookShelf shelves={this.shelves}/>
               </div>
             </div>
                
