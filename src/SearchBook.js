@@ -12,11 +12,10 @@ class SearchBook extends Component {
 
  
 
-    searchBook=(event)=> {
-        const { query } =event.target.value
+    searchBook=(query)=> {
         this.setState({query})
         if(query){
-            BooksAPI.search(query.trim(),20).then(books=>{
+            BooksAPI.search(query.trim()).then(books=>{
                 this.setState({newBooks:books})
             })
          } else{
@@ -35,7 +34,7 @@ class SearchBook extends Component {
                 type="text" 
                 placeholder="Search by title or author" 
                 value={query}
-                onChange={()=> this.searchBook}
+                onChange={(event)=> this.searchBook(event.target.value)}
                 />
               </div>
             </div>
