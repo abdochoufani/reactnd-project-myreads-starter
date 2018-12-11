@@ -23,8 +23,8 @@ class BooksApp extends React.Component {
   }
 
 
-  changeShelf=(changeBox,shelf)=> {
-    BooksAPI.update(changeBox, shelf).then(r=>{
+  changeShelf=(changedBook,shelf)=> {
+    BooksAPI.update(changedBook, shelf).then(r=>{
       changedBook.shelf=shelf
       this.setState(prevState => ({
         books: prevState.books
@@ -40,12 +40,12 @@ class BooksApp extends React.Component {
     const {books} =this.state
     return (
       <div className="app">
-        <Route path ='/search' render={()=> ( 
+        <Route path ='/search' render={({history})=> ( 
         <SearchBook books={books} changeShelf={this.changeShelf} />
         )}
         />
          <Route path='/' exact render={()=> (
-           <ListBooks changeShelf={this.changeShelf} />
+           <ListBooks books={books} changeShelf={this.changeShelf} />
          )}
          />
       </div>
