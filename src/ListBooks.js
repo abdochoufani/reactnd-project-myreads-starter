@@ -21,11 +21,11 @@ class ListBooks extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              {shelves.map((shelf, index)=>{
+              {shelves.map((shelf)=>{
                  const shelfBooks = books.filter(book=>
                     book.shelf===shelf.type);
                     return (
-                        <div className="bookshelf" key={index}>
+                        <div className="bookshelf" key={shelf.title}>
                         <h2 className="bookshelf-title">{shelf.title}</h2>
                         <div className="bookshelf-books">
                           <BookShelf books={shelfBooks} changeShelf={changeShelf} />
