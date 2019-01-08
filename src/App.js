@@ -1,7 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import SearchBook from'./SearchBook'
-import { Route } from 'react-router-dom'
+import {Switch, Route } from 'react-router-dom'
 import ListBooks from './ListBooks'
 import './App.css'
 
@@ -40,6 +40,7 @@ class BooksApp extends React.Component {
     const {books} =this.state
     return (
       <div className="app">
+      <Switch>
         <Route path ='/search' render={({history})=> ( 
         <SearchBook books={books} changeShelf={this.changeShelf} />
         )}
@@ -48,6 +49,7 @@ class BooksApp extends React.Component {
            <ListBooks books={books} changeShelf={this.changeShelf} />
          )}
          />
+         </Switch>
       </div>
     )
   }
